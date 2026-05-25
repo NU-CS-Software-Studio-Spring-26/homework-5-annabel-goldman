@@ -1,0 +1,9 @@
+<div id="<%= dom_id(todo, :priority_toggle) %>">
+  <%= button_to toggle_priority_todo_path(todo),
+                method: :patch,
+                form: { data: { turbo_stream: true } },
+                class: "priority-toggle#{' priority-toggle--high' if todo.high_priority?}",
+                aria: { label: todo.high_priority? ? "Remove high priority" : "Mark as high priority" } do %>
+    <span aria-hidden="true"><%= todo.high_priority? ? "★" : "☆" %></span>
+  <% end %>
+</div>

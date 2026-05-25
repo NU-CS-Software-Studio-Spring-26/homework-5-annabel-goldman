@@ -10,6 +10,11 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get index at root path" do
+    get root_url
+    assert_response :success
+  end
+
   test "should get new" do
     get new_todo_url
     assert_response :success
@@ -44,5 +49,19 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to todos_url
+  end
+
+  test "should toggle priority via turbo stream" do
+    assert_not @todo.high_priority?
+
+    patch toggle_priority_todo_url(@todo), as: :turbo_stream
+
+    assert_response :success
+    assert_equal "text/vnd.turbo-stream.html", response.media_type
+    assert_includes response.body, "<turbo-stream"
+    assert_includes response.body, dom_id(@todo, :priority_toggle)
+
+    @todo.reload
+    assert @todo.high_priority?
   end
 end

@@ -1,4 +1,5 @@
 <div id="<%= dom_id todo %>">
+  <%= render "todos/priority_toggle", todo: todo %>
   <p>
     <strong>Description:</strong>
     <%= todo.description %>
