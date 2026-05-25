@@ -1,0 +1,13 @@
+---
+description: Rails 8 conventions for the sample todo app
+alwaysApply: true
+---
+
+Follow standard Rails 8 convensions
+Use the rails generators for new models, controllers, migrations, etc 
+keep the controllers thin 
+use html and JSON
+keep the shared view particals close to the relevant existing views 
+don't add in line java/erb 
+keep migrations reversible and use migrations to change schema don't change the root schema itself. 
+don't add new gems unless requested

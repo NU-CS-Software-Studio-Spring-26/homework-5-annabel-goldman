@@ -1,0 +1,11 @@
+---
+description: Security rules for the repo
+alwaysApply: true
+---
+
+never: write, print, log, commit, or echo secrets or anything sensative 
+don't use eval on user input
+no html_safe / raw on untrusted input
+Use parameterized queries, never string-interpolate SQL
+never read from or expose any ignored files 
+Do not disable CSRF, mass assignment protection, or Devise's session checks
