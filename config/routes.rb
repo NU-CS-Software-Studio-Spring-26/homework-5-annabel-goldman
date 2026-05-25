@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   resources :todos do
+    member do
+      patch :toggle_priority
+    end
+
     collection do
       get :week_old
     end
